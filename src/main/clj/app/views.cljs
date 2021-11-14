@@ -145,8 +145,8 @@
   [:<>
      [:label {:for id} (name id)]
      [:div.input
-       [:input {:type :radio :name :hvr-filter :id id :default-checked (= id-f state)}
-               :on-change (partial change-hvr-filter id-f)]]])
+       [:input {:type :radio :name :hvr-filter :id id :default-checked (= id-f state)
+                :on-change (partial change-hvr-filter id-f)}]]])
 
 (defn hvr-filter-box [state]
   [:<>

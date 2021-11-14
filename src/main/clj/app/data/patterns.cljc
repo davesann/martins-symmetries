@@ -1,7 +1,7 @@
 (ns app.data.patterns
   (:require 
     [dsann.let-map :refer [let-map]]
-    [dsann.patterns.fns :as f]))
+    [app.data.fns :as f]))
 
 
 (def patterns-3x5-8bit

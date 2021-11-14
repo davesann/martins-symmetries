@@ -1,4 +1,4 @@
-(ns dsann.patterns.fns
+(ns app.data.fns
  (:require
    [dsann.let-map :refer [let-map]]
    [clojure.pprint :refer [cl-format]]))
