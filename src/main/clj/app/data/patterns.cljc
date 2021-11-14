@@ -60,6 +60,7 @@
                                          symmetrical-h!r (and      symmetrical-h?  (not symmetrical-v?)      symmetrical-r?)
                                          symmetrical-!vr (and (not symmetrical-h?)      symmetrical-v?       symmetrical-r?)
                                          symmetrical-hvr (and      symmetrical-h?       symmetrical-v?       symmetrical-r?)))))
+                ;; do each of the above for every number in the range lowest to highest -1
                 (range lowest highest))
 
     ;; cross link the patterns and index by number
