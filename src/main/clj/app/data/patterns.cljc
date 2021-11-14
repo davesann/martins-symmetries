@@ -15,19 +15,37 @@
 
     _patterns (into []
                 (comp
+                  ;;find the bitcount
                   (map    (fn [i]     [i (f/bitcount i)]))
+                  ;; keep those with 8 1s
                   (filter (fn [[i b]] (= 8 b)))
+                  ;; generate the patern data
                   (map    (fn [[i b]] (let-map
+                                         ; the number
                                          i               i
+                                         
+                                         ; the bitcount
                                          bitcount        b
+                                        
+                                         ; number as a binary string
                                          binary-str      (f/binary-str i)
+                                         
+                                         ; number as a vector of 0 and 1 (length 15) 
                                          binary-vec      (binary-vec-15 i)
+
+                                         ; partition as groups of 3 (there will be 5)
                                          pattern         (partition 3 binary-vec)
+
+                                         ; flip horizontally
                                          pattern-h       (f/flip-horizontal pattern)
+
+                                         ;flip vertically 
                                          pattern-v       (f/flip-vertical   pattern)
+
+                                         ; rotate
                                          pattern-r       (f/flip-vertical   pattern-h) ;; h + v -> r
 
-                                         ;; is it symmetrical
+                                         ;; is it symmetrical?
                                          symmetrical-h?  (= pattern pattern-h)
                                          symmetrical-v?  (= pattern pattern-v)
                                          symmetrical-r?  (= pattern pattern-r)
@@ -50,9 +68,10 @@
     ;; sequence of the patterns sorted by increasing i
     patterns        (sort-by :i (vals patterns-by-i))
 
-    ;; numbers that have a pattern 
+    ;; numbers that have a pattern - not all do - sorted in increasing value 
     pattern-numbers (sort (keys patterns-by-i))
 
+    ;; countes of various values 
     pattern-counts (into {:total (count patterns)
                           :unsymmetrical (count (remove :symmetrical? patterns))}
                          (map (fn [f]
